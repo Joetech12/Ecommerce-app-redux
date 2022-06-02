@@ -1,56 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import { useSelector } from "react-redux";
+import Product from "./components/Product";
+import { selectItems } from "./features/basketSlice";
 
 function App() {
+  const items = useSelector(selectItems);
+
+  console.log("The items are", items);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+      <header className="p-4 flex justify-between items-center">
+        {/* Left side */}
+        <div className="">
+          <h1 className="font-bold text-4xl">JOSSY STORE</h1>
+          <h2 className="">Your no. 1 store for React stuff</h2>
+        </div>
+
+        {/* Right side */}
+        <div className="">Cart Item: {items.length}</div>
       </header>
+
+      <Product id="112" title="Ipad pro 2021" />
+      <Product id="113" title="Soft skills by John" />
+      <Product id="114" title="Rubix Cube" />
     </div>
   );
 }
